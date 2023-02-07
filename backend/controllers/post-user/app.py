@@ -1,8 +1,5 @@
-
+from ...models.response import response
 # NOTE: no auth required
 def lambda_handler(event, context):
     # TODO implement
-    return {
-        'statusCode': 200,
-        'body': json.dumps('Hello from Lambda!')
-    }
+    return response(0, {})
