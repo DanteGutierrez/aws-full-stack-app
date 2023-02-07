@@ -1,0 +1,38 @@
+version: "3.9"
+services:
+  get-user:
+    build: ./controllers/get-user
+    image: get-user:1.0
+  post-user:
+    build: ./controllers/post-user
+    image: post-user:1.0
+  put-user:
+    build: ./controllers/put-user
+    image: put-user:1.0
+  delete-user:
+    build: ./controllers/delete-user
+    image: delete-user:1.0
+  get-book:
+    build: ./controllers/get-book
+    image: get-book:1.0
+  post-book:
+    build: ./controllers/post-book
+    image: post-book:1.0
+  put-book:
+    build: ./controllers/put-book
+    image: put-book:1.0
+  delete-book:
+    build: ./controllers/delete-book
+    image: delete-book:1.0
+  get-receipt:
+    build: ./controllers/get-receipt
+    image: get-receipt:1.0
+  post-receipt:
+    build: ./controllers/post-receipt
+    image: post-receipt:1.0
+  put-receipt:
+    build: ./controllers/put-receipt
+    image: put-receipt:1.0
+  delete-receipt:
+    build: ./controllers/delete-receipt
+    image: delete-receipt:1.0
