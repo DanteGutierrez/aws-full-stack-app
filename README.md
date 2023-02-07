@@ -9,6 +9,7 @@ Using aws lambda functions to connect to the api gateway
 ## Structure: ##
 <details>
   <summary><h3>Books</h3></summary>
+  
 Field | Data Type
 ------|----------
 picture | string
@@ -26,6 +27,7 @@ owner | dict<date, user_id>
 
 <details>
   <summary><h3>Users</h3></summary>
+  
   Field | Data Type
   ------|----------
   name | string
@@ -40,6 +42,7 @@ owner | dict<date, user_id>
   
 <details>
   <summary><h3>Receipts</h3></summary>
+  
   Field | Data Type
   ------|----------
   user_id | string
