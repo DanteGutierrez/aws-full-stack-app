@@ -47,7 +47,7 @@ owner | dict<date, user_id>
   ------|----------
   user_id | string
   date | date
-  cost | number
+  total | number
   purchases | list[[Purchase OBJ]](#purchase-obj)
   payment_id | string
 </details>
@@ -66,5 +66,17 @@ owner | dict<date, user_id>
 
 ## API Documentation ##
 
-Endpoint | Body | Returns | Notes
----------|------|---------|------
+* User needs to be authenticated to access any endpoint
+
+Method | Endpoint | Body | Returns | Notes
+-------|----------|------|---------|------
+GET | /user | null | list of users | query by name
+GET | /user/{id} | null | user | 
+POST | /user | [User](#users) | created user |
+PUT | /user/{id} | [User](#users) | updated user | ignores address
+DELETE | /user/{id} | null | null | 
+GET | /book | null | list of books | query by title, author, genre, price, condition, isHardback and availability
+GET | /book/{id} | null | books | 
+POST | /book | [Book](#books) | created book |
+PUT | /book/{id} | [Book](#books) | updated book | 
+DELETE | /book/{id} | null | null | 
