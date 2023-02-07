@@ -48,7 +48,7 @@ owner | dict<date, user_id>
   user_id | string
   date | date
   cost | number
-  purchases | list[Purchase OBJ]
+  purchases | list[[Purchase OBJ]](#purchase-obj)
   payment_id | string
 </details>
   
