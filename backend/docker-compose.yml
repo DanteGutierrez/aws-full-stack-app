@@ -24,15 +24,15 @@ services:
   delete-book:
     build: ./controllers/delete-book
     image: delete-book:1.0
-  get-receipt:
-    build: ./controllers/get-receipt
-    image: get-receipt:1.0
-  post-receipt:
-    build: ./controllers/post-receipt
-    image: post-receipt:1.0
-  put-receipt:
-    build: ./controllers/put-receipt
-    image: put-receipt:1.0
-  delete-receipt:
-    build: ./controllers/delete-receipt
-    image: delete-receipt:1.0
+  # get-receipt:
+  #   build: ./controllers/get-receipt
+  #   image: get-receipt:1.0
+  # post-receipt:
+  #   build: ./controllers/post-receipt
+  #   image: post-receipt:1.0
+  # put-receipt:
+  #   build: ./controllers/put-receipt
+  #   image: put-receipt:1.0
+  # delete-receipt:
+  #   build: ./controllers/delete-receipt
+  #   image: delete-receipt:1.0
