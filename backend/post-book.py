@@ -1,15 +1,27 @@
-from models.Database import initialize_db
-from models.Response import response
+from models.Database import initialize_db, connect_db
+from models.response import response
 from models.Book import Book, Genre, Condition
 import asyncio
 
+# asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
+# asyncio.new_event_loop()
+
 # NOTE: only admins can post books
 def lambda_handler(event, context):
+    print("starting...")
+    asyncio.run(test())
+    print("done")
     # TODO implement
-    return response(0, {})
+    # return response(0, {})
+    return {"fuck": "you"}
 
 
-initialize_db([Book])
+# initialize_db([Book])
+
+
+async def test():
+    await connect_db([Book])
+    await create_book()
 
 
 async def create_book():
@@ -25,8 +37,11 @@ async def create_book():
         is_paperback=True,
         is_available=True,
     )
-    book.save()
+    await book.save()
+
+    new_books = await Book.find_all().to_list()
+    print(new_books)
 
 
-asyncio.run(create_book())
-print("done")
+# asyncio.run(create_book())
+# print("done")

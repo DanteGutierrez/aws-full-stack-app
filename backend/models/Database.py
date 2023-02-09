@@ -8,7 +8,7 @@ async def connect_db(models: list):
     client = AsyncIOMotorClient(
         "mongodb+srv://aws-lib:I5TUdvhuo66m0z8h@cluster0.tvvggns.mongodb.net/?retryWrites=true&w=majority"
     )  # switch this to environ variable
-    await init_beanie(database=client.BookStore, document_models=models)
+    await init_beanie(database=client.Booked_Store, document_models=models)
 
 
 def initialize_db(models: list):
