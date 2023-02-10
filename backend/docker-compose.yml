@@ -1,38 +1,47 @@
 version: "3.9"
 services:
+  checkout:
+    build: 
+      context: .
+      dockerfile: checkout.dockerfile
+    image: checkout:1.0
   get-user:
-    build: ./controllers/get-user
+    build: 
+      context: .
+      dockerfile: get-user.dockerfile
     image: get-user:1.0
   post-user:
-    build: ./controllers/post-user
+    build: 
+      context: .
+      dockerfile: post-user.dockerfile
     image: post-user:1.0
   put-user:
-    build: ./controllers/put-user
+    build: 
+      context: .
+      dockerfile: put-user.dockerfile
     image: put-user:1.0
   delete-user:
-    build: ./controllers/delete-user
+    build: 
+      context: .
+      dockerfile: delete-user.dockerfile
     image: delete-user:1.0
   get-book:
-    build: ./controllers/get-book
+    build: 
+      context: .
+      dockerfile: get-book.dockerfile
     image: get-book:1.0
   post-book:
-    build: ./controllers/post-book
+    build: 
+      context: .
+      dockerfile: post-book.dockerfile
     image: post-book:1.0
   put-book:
-    build: ./controllers/put-book
+    build: 
+      context: .
+      dockerfile: put-book.dockerfile
     image: put-book:1.0
   delete-book:
-    build: ./controllers/delete-book
+    build: 
+      context: .
+      dockerfile: delete-book.dockerfile
     image: delete-book:1.0
-  # get-receipt:
-  #   build: ./controllers/get-receipt
-  #   image: get-receipt:1.0
-  # post-receipt:
-  #   build: ./controllers/post-receipt
-  #   image: post-receipt:1.0
-  # put-receipt:
-  #   build: ./controllers/put-receipt
-  #   image: put-receipt:1.0
-  # delete-receipt:
-  #   build: ./controllers/delete-receipt
-  #   image: delete-receipt:1.0
