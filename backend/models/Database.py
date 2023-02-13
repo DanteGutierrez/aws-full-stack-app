@@ -12,4 +12,4 @@ async def connect_db(models: list):
 
 
 def initialize_db(models: list):
-    asyncio.run(connect_db(models))
+    asyncio.get_event_loop().run_until_complete(connect_db(models))

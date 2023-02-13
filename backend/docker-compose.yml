@@ -5,43 +5,61 @@ services:
       context: .
       dockerfile: checkout.dockerfile
     image: checkout:1.0
+    ports: 
+      - "9000:8080"
   get-user:
     build: 
       context: .
       dockerfile: get-user.dockerfile
     image: get-user:1.0
+    ports: 
+      - "9001:8080"
   post-user:
     build: 
       context: .
       dockerfile: post-user.dockerfile
     image: post-user:1.0
+    ports: 
+      - "9002:8080"
   put-user:
     build: 
       context: .
       dockerfile: put-user.dockerfile
     image: put-user:1.0
+    ports: 
+      - "9003:8080"
   delete-user:
     build: 
       context: .
       dockerfile: delete-user.dockerfile
     image: delete-user:1.0
+    ports: 
+      - "9004:8080"
   get-book:
     build: 
       context: .
       dockerfile: get-book.dockerfile
     image: get-book:1.0
+    ports: 
+      - "9005:8080"
   post-book:
     build: 
       context: .
       dockerfile: post-book.dockerfile
     image: post-book:1.0
+    ports: 
+      - "9006:8080"
   put-book:
     build: 
       context: .
       dockerfile: put-book.dockerfile
     image: put-book:1.0
+    ports: 
+      - "9007:8080"
   delete-book:
     build: 
       context: .
       dockerfile: delete-book.dockerfile
     image: delete-book:1.0
+    ports: 
+      - "9008:8080"
