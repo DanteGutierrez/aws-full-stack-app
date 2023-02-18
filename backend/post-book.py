@@ -3,45 +3,41 @@ from models.response import response
 from models.Book import Book, Genre, Condition
 import asyncio
 
-# asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
-# asyncio.new_event_loop()
+initialize_db([Book])
 
 # NOTE: only admins can post books
 def lambda_handler(event, context):
-    print("starting...")
-    asyncio.run(test())
-    print("done")
-    # TODO implement
-    # return response(0, {})
-    return {"fuck": "you"}
 
+    return asyncio.get_event_loop().run_until_complete(post_book(event))
 
-# initialize_db([Book])
+async def post_book(event):
 
+    if ("title" not in event 
+        or "pic" not in event 
+        or "author" not in event 
+        or ("genre" not in event and event["genre"] not in Genre._value2member_map_)
+        or "purchase_price" not in event
+        or "rent_price" not in event
+        or ("condition" not in event and event["condition"] not in Condition._value2member_map_)
+        or "description" not in event
+        or "is_paperback" not in event):
 
-async def test():
-    await connect_db([Book])
-    await create_book()
+        return response(400, {"message": "Book missing data"})
+    
 
-
-async def create_book():
     book = Book(
-        title="test",
-        pic="test",
-        author="test",
-        genre=Genre.FICTION,
-        purchase_price=10.69,
-        rent_price=0.69,
-        condition=Condition.MINT_CONDITION,
-        description="test",
-        is_paperback=True,
+        title=event["title"],
+        pic=event["pic"],
+        author=event["author"],
+        genre=event["genre"],
+        purchase_price=event["purchase_price"],
+        rent_price=event["rent_price"],
+        condition=event["condition"],
+        description=event["description"],
+        is_paperback=event["is_paperback"],
         is_available=True,
     )
-    await book.save()
 
-    new_books = await Book.find_all().to_list()
-    print(new_books)
+    savedBook = await book.save()
 
-
-# asyncio.run(create_book())
-# print("done")
+    return response(200, savedBook.dict())
