@@ -21,11 +21,11 @@ async def get_user(event):
         if req_body.get("id") is not None:
             user = await User.get(req_body["id"])
             await user.delete()
-            return response(200, json.loads(json_util.dumps(user.dict())))
+            return response(200, user.dict())
         elif req_body.get("email") is not None:
             user = await User.find_one(User.email == req_body["email"])
             await user.delete()
-            return response(200, json.loads(json_util.dumps(user.dict())))
+            return response(200, user.dict())
         else:
             return response(400, json.loads({"error": "must pass in id or email"}))
 

@@ -31,4 +31,4 @@ async def post_user(event):
             email=req_body["email"],
         )
     await user.create()
-    return response(200, json.loads(json_util.dumps(user.dict())))
+    return response(200, user.dict())

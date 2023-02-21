@@ -16,19 +16,15 @@ async def get_user(event):
     path_params: dict = event.get("pathParameters")
     try:
         if path_params is None:
-            return response(
-                200, json.loads(json_util.dumps(await User.find_all().to_list()))
-            )
+            return response(200, await User.find_all().to_list())
         if path_params.get("id") is not None:
             user = await User.get(path_params["id"])
-            return response(200, json.loads(json_util.dumps(user)))
+            return response(200, user.dict())
         elif path_params.get("email") is not None:
             user = await User.find_one(User.email == path_params["email"])
-            return response(200, json.loads(json_util.dumps(user)))
+            return response(200, user.dict())
         else:
-            return response(
-                200, json.loads(json_util.dumps(await User.find_all().to_list()))
-            )
+            return response(200, await User.find_all().to_list())
 
     except Exception as e:
         return response(500, str(e))
