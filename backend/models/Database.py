@@ -1,13 +1,12 @@
 from beanie import init_beanie
 from motor.motor_asyncio import AsyncIOMotorClient
 import asyncio
+from models.Environ import Environ
 
 
 async def connect_db(models: list):
     """Initialize db service"""
-    client = AsyncIOMotorClient(
-        "mongodb+srv://aws-lib:I5TUdvhuo66m0z8h@cluster0.tvvggns.mongodb.net/?retryWrites=true&w=majority"
-    )  # switch this to environ variable
+    client = AsyncIOMotorClient(Environ.MONGO_CON)  # switch this to environ variable
     await init_beanie(database=client.Booked_Store, document_models=models)
 
 
