@@ -1,25 +1,34 @@
 from models.response import response
+from models.User import User, Role
+from models.Database import initialize_db
+import asyncio
+import json
+from bson import json_util
+
+initialize_db([User])
 
 # NOTE: who can get users?
 def lambda_handler(event, context):
+    return asyncio.get_event_loop().run_until_complete(get_user(event))
 
-    if "pathParameters" not in event or "queryStringParameters" not in event:
-        return response(400, {"message":"missing request data"})
-    
-    path = event["pathParameters"]
 
-    if path is not None and "id" in path:
-        # TODO get by id
-        return response(0, {})
-    
-    params = event["queryStringParameters"]
+async def get_user(event):
+    path_params: dict = event.get("pathParameters")
+    try:
+        if path_params is None:
+            return response(
+                200, json.loads(json_util.dumps(await User.find_all().to_list()))
+            )
+        if path_params.get("id") is not None:
+            user = await User.get(path_params["id"])
+            return response(200, json.loads(json_util.dumps(user)))
+        elif path_params.get("email") is not None:
+            user = await User.find_one(User.email == path_params["email"])
+            return response(200, json.loads(json_util.dumps(user)))
+        else:
+            return response(
+                200, json.loads(json_util.dumps(await User.find_all().to_list()))
+            )
 
-    # Full collection here
-
-    if params is not None and "name" in params:
-        # TODO filter by name
-    if params is not None and "role" in params:
-        # TODO filter by role
-
-    # TODO implement
-    return response(0, {})
+    except Exception as e:
+        return response(500, str(e))

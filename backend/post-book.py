@@ -35,7 +35,6 @@ async def create_book():
         condition=Condition.MINT_CONDITION,
         description="test",
         is_paperback=True,
-        is_available=True,
     )
     await book.save()
 

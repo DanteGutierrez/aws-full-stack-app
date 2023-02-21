@@ -1,7 +1,7 @@
 from pydantic import Field, BaseModel
 from beanie import Document, Link
 from enum import Enum
-from typing import List, Optional
+from typing import List
 from models.Book import Book
 
 
