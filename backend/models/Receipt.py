@@ -11,4 +11,5 @@ class Receipt(Document):
     datetime: str = Field(default=datetime.now().strftime("%m/%d/%Y %H:%M:%S"))
     total_price: Decimal = Field(decimal_places=2)
     stripe_payment_id: str
-    purchases: Dict[str, List[str]]  # {book_id: [price, rented/owned]}
+    # purchases: Dict[str, List[str]]  # {book_id: [price, rented/owned]}
+    purchases: Dict[str, float]  # {book_id: price}

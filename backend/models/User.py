@@ -15,5 +15,5 @@ class User(Document, BaseModel):
     password: str
     email: str
     role: Role = Field(default=Role.USER)
-    rented: List[Link[Book]] = Field(default=[])
+    # rented: List[Link[Book]] = Field(default=[])
     owned: List[Link[Book]] = Field(default=[])

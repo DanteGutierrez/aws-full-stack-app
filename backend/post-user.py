@@ -30,5 +30,7 @@ async def post_user(event):
             password=req_body["password"],
             email=req_body["email"],
         )
+    if await User.find_one(User.email == req_body["email"]) is not None:
+        return response(400, {"error": "User already exists with that email"})
     await user.create()
     return response(200, user.dict())
