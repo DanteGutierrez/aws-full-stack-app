@@ -63,3 +63,10 @@ services:
     image: delete-book:1.0
     ports: 
       - "9008:8080"
+  post-login:
+    build: 
+      context: .
+      dockerfile: post-login.dockerfile
+    image: post-login:1.0
+    ports: 
+      - "9009:8080"
