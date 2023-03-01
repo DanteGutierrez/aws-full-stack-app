@@ -39,13 +39,9 @@ async def checkout(event):
     }
 
     purchase_info: dict = {
-        "email": req_body["email"],
+        "email": user.email,
         "books": req_body["books"],
     }
-
-    user: User = await User.find_one({"email": purchase_info["email"]})
-    if user is None:
-        return response(400, {"error": "User does not exist"})
 
     purchases: dict = {}
     total_price: float = 0.0

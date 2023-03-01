@@ -22,10 +22,10 @@ async def delete_user(event):
         req_headers: dict = event.get("headers")
     if req_headers is None or req_headers.get("access_token") is None:
         return response(401, {"error": "must be logged in to delete user"})
-    user = await validate(req_headers["access_token"])
-    if user is None:
+    userVal = await validate(req_headers["access_token"])
+    if userVal is None:
         return response(401, {"error": "must be logged in to delete user"})
-    if user.role != Role.ADMIN:
+    if userVal.role != Role.ADMIN:
         return response(403, {"error": "must be admin to delete user"})
     try:
         if req_body.get("id") is not None:
