@@ -1,4 +1,5 @@
 from models.response import response
+from models.auth import validate
 from models.Environ import Environ
 from models.Database import initialize_db
 from models.Book import Book
@@ -20,8 +21,15 @@ def lambda_handler(event, context):
 async def checkout(event):
     try:
         req_body: dict = json.loads(event["body"])
+        req_headers: dict = json.loads(event.get("headers"))
     except:
         req_body: dict = event["body"]
+        req_headers: dict = event.get("headers")
+    if req_headers is None or req_headers.get("access_token") is None:
+        return response(401, {"error": "must be logged in to checkout!"})
+    user = await validate(req_headers["access_token"])
+    if user is None:
+        return response(401, {"error": "must be logged in to checkout!"})
 
     user_card: dict = {
         "card_num": req_body["card_num"],

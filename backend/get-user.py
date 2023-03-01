@@ -1,4 +1,5 @@
 from models.response import response
+from models.auth import validate
 from models.User import User, Role
 from models.Database import initialize_db
 import asyncio

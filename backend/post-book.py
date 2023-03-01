@@ -1,7 +1,10 @@
 from models.Database import initialize_db, connect_db
+from models.auth import validate
 from models.response import response
 from models.Book import Book, Genre, Condition
+from models.User import User, Role
 import asyncio
+import json
 
 initialize_db([Book])
 
@@ -12,6 +15,17 @@ def lambda_handler(event, context):
 
 
 async def post_book(event):
+    try:
+        req_headers: dict = json.loads(event.get("headers"))
+    except:
+        req_headers: dict = event.get("headers")
+    if req_headers is None or req_headers.get("access_token") is None:
+        return response(401, {"error": "must be logged in to post book!"})
+    user = await validate(req_headers["access_token"])
+    if user is None:
+        return response(401, {"error": "must be logged in to post book!"})
+    if user.role != Role.ADMIN:
+        return response(403, {"error": "must be admin to post book!"})
 
     if (
         "title" not in event
