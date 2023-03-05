@@ -24,7 +24,7 @@ services:
   put-user:
     build: 
       context: .
-      dockerfile: put-user.dockerfile
+      dockerfile: update-user.dockerfile
     image: put-user:1.0
     ports: 
       - "9003:8080"

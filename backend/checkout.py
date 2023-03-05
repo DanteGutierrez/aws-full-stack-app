@@ -5,6 +5,7 @@ from models.Database import initialize_db
 from models.Book import Book
 from models.Receipt import Receipt
 from models.User import User
+from models.BasicMessageSender import BasicMessageSender
 import asyncio
 import stripe
 import json
@@ -76,11 +77,23 @@ async def checkout(event):
     await user.save()
 
     receipt: Receipt = Receipt(
-        user=user,
+        user_id=str(user.id),
         total_price=total_price,
         stripe_payment_id=charge.id,
         purchases=purchases,
     )
     await receipt.save()
 
+    basic_message_sender = BasicMessageSender(
+        Environ.BROKER_ID,
+        Environ.BROKER_USERNAME,
+        Environ.BROKER_PASSWORD,
+        Environ.BROKER_REGION,
+    )
+
+    basic_message_sender.declare_queue(Environ.BROKER_QUEUE)
+    basic_message_sender.send_message(exchange="", routing_key=Environ.BROKER_QUEUE, body=str(receipt.id))
+    basic_message_sender.close()
+
     return response(200, {"successfully purchased": receipt.dict()})
+6

@@ -7,7 +7,7 @@ from models.User import User
 
 
 class Receipt(Document):
-    user: Link[User]
+    user_id: str
     datetime: str = Field(default=datetime.now().strftime("%m/%d/%Y %H:%M:%S"))
     total_price: Decimal = Field(decimal_places=2)
     stripe_payment_id: str
