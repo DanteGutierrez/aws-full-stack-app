@@ -21,13 +21,6 @@ services:
     image: post-user:1.0
     ports: 
       - "9002:8080"
-  put-user:
-    build: 
-      context: .
-      dockerfile: update-user.dockerfile
-    image: put-user:1.0
-    ports: 
-      - "9003:8080"
   delete-user:
     build: 
       context: .

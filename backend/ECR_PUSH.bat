@@ -1,30 +1,31 @@
-aws ecr get-login-password --region us-west-2 | docker login --username AWS --password-stdin 612894771267.dkr.ecr.us-west-2.amazonaws.com
+aws ecr get-login-password --region us-west-1 | docker login --username AWS --password-stdin 190369763426.dkr.ecr.us-west-1.amazonaws.com
+
 
 docker compose up -d
 
-docker tag get-user:1.0 612894771267.dkr.ecr.us-west-2.amazonaws.com/bookstore:get-user
-docker push 612894771267.dkr.ecr.us-west-2.amazonaws.com/bookstore:get-user
+@REM docker tag get-user:1.0 190369763426.dkr.ecr.us-west-1.amazonaws.com/aws-book-store:get-user
+@REM docker push 190369763426.dkr.ecr.us-west-1.amazonaws.com/aws-book-store:get-user
 
-docker tag post-user:1.0 612894771267.dkr.ecr.us-west-2.amazonaws.com/bookstore:post-user
-docker push 612894771267.dkr.ecr.us-west-2.amazonaws.com/bookstore:post-user
+@REM docker tag post-user:1.0 190369763426.dkr.ecr.us-west-1.amazonaws.com/aws-book-store:post-user
+@REM docker push 190369763426.dkr.ecr.us-west-1.amazonaws.com/aws-book-store:post-user
 
-docker tag update-user:1.0 612894771267.dkr.ecr.us-west-2.amazonaws.com/bookstore:update-user
-docker push 612894771267.dkr.ecr.us-west-2.amazonaws.com/bookstore:update-user
+@REM docker tag delete-user:1.0 190369763426.dkr.ecr.us-west-1.amazonaws.com/aws-book-store:delete-user
+@REM docker push 190369763426.dkr.ecr.us-west-1.amazonaws.com/aws-book-store:delete-user
 
-docker tag delete-user:1.0 612894771267.dkr.ecr.us-west-2.amazonaws.com/bookstore:delete-user
-docker push 612894771267.dkr.ecr.us-west-2.amazonaws.com/bookstore:delete-user
+@REM docker tag post-book:1.0 190369763426.dkr.ecr.us-west-1.amazonaws.com/aws-book-store:post-book
+@REM docker push 190369763426.dkr.ecr.us-west-1.amazonaws.com/aws-book-store:post-book
 
-docker tag post-book:1.0 612894771267.dkr.ecr.us-west-2.amazonaws.com/bookstore:post-book
-docker push 612894771267.dkr.ecr.us-west-2.amazonaws.com/bookstore:post-book
+@REM docker tag get-book:1.0 190369763426.dkr.ecr.us-west-1.amazonaws.com/aws-book-store:get-book
+@REM docker push 190369763426.dkr.ecr.us-west-1.amazonaws.com/aws-book-store:get-book
 
-docker tag get-book:1.0 612894771267.dkr.ecr.us-west-2.amazonaws.com/bookstore:get-book
-docker push 612894771267.dkr.ecr.us-west-2.amazonaws.com/bookstore:get-book
+@REM docker tag delete-book:1.0 190369763426.dkr.ecr.us-west-1.amazonaws.com/aws-book-store:delete-book
+@REM docker push 190369763426.dkr.ecr.us-west-1.amazonaws.com/aws-book-store:delete-book
 
-docker tag update-book:1.0 612894771267.dkr.ecr.us-west-2.amazonaws.com/bookstore:update-book
-docker push 612894771267.dkr.ecr.us-west-2.amazonaws.com/bookstore:update-book
+@REM docker tag checkout:1.0 190369763426.dkr.ecr.us-west-1.amazonaws.com/aws-book-store:checkout
+@REM docker push 190369763426.dkr.ecr.us-west-1.amazonaws.com/aws-book-store:checkout
 
-docker tag delete-book:1.0 612894771267.dkr.ecr.us-west-2.amazonaws.com/bookstore:delete-book
-docker push 612894771267.dkr.ecr.us-west-2.amazonaws.com/bookstore:delete-book
+@REM docker tag put-book:1.0 190369763426.dkr.ecr.us-west-1.amazonaws.com/aws-book-store:put-book
+@REM docker push 190369763426.dkr.ecr.us-west-1.amazonaws.com/aws-book-store:put-book
 
-docker tag checkout:1.0 612894771267.dkr.ecr.us-west-2.amazonaws.com/bookstore:checkout
-docker push 612894771267.dkr.ecr.us-west-2.amazonaws.com/bookstore:checkout
+docker tag post-login:1.0 190369763426.dkr.ecr.us-west-1.amazonaws.com/aws-book-store:post-login
+docker push 190369763426.dkr.ecr.us-west-1.amazonaws.com/aws-book-store:post-login

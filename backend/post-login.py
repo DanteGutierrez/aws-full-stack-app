@@ -26,4 +26,4 @@ async def post_login(event):
     access_token: str = jwt.encode(
         {"bearer_token": user.email}, "secret", algorithm="HS256"
     )
-    return {"access_token": access_token}
+    return response(200, {"access_token": access_token})
