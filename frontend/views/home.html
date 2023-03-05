@@ -7,23 +7,15 @@
         <link href="../styles/style.css" rel="stylesheet">
     </head>
     <body>
-        <ul class="nav border-bottom border-info-subtle">
-            <li class="nav-item">
-                <a class="nav-link active">Home</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" onclick="navigateToPage('collection')">Collection</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" onclick="navigateToPage('login')">Login</a>
-            </li>
+        <ul id="NAV" class="nav border-bottom border-info-subtle">
+            <li><span class="nav-link">Loading...</span></li>
         </ul>
         <div class="container-fluid">
             <div class="row">
                 <h1>Home</h1>
             </div>
             <div class="row">
-                <p>This is our temporary Home page, we do library stuff here...</p>
+                <p id="TEST">This is our temporary Home page, we do library stuff here...</p>
             </div>
         </div>
         <!-- Bootstrap JS -->
@@ -31,5 +23,6 @@
         integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
             crossorigin="anonymous"></script>
         <script src="../scripts/functions.js"></script>
+        <script src="../scripts/renderer.js"></script>
     </body>
 </html>
