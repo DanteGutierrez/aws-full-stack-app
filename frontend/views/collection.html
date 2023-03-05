@@ -9,23 +9,42 @@
     </head>
 
     <body>
-        <ul class="nav border-bottom border-info-subtle">
-            <li class="nav-item">
-                <a class="nav-link" onclick="navigateToPage('home')">Home</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link active">Collection</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" onclick="navigateToPage('login')">Login</a>
-            </li>
+        <ul id="NAV" class="nav border-bottom border-info-subtle">
+            <li><span class="nav-link">Loading...</span></li>
         </ul>
-        <div class="container-fluid">
-            <div class="row">
-                <h1>Collection</h1>
+        <div class="container-fluid mt-1">
+            <div class="row g-0 justify-content-between">
+                <h1 class="col-auto">Collection</h1>
+                <button class="col-auto btn btn-primary mb-2" data-bs-toggle="collapse" data-bs-target="#filterCollapse">Filters</button>
             </div>
-            <div class="row">
-                <p>There should be a collection here</p>
+            <form class="row g-0 gap-3 px-1 collapse justify-content-end mb-2" id="filterCollapse">
+                <span class="col-auto form-floating">
+                    <input type="text" id="Title" name="Title" class="form-control col-auto" placeholder="Title"/>
+                    <label for="Title">Title</label>
+                </span>
+                <span class="col-auto form-floating">
+                    <input type="text" id="Author" name="Author" class="form-control col-auto" placeholder="Author"/>
+                    <label for="Author">Author</label>
+                </span>
+                <span class="col-auto form-floating">
+                    <input type="text" id="Genre" name="Genre" class="form-control col-auto" placeholder="Genre"/>
+                    <label for="Genre">Genre</label>
+                </span>
+                <span class="input-group col-12">
+                    <span class="input-group-text">$</span>
+                    <span class="form-floating">
+                        <input type="text" id="Min" name="Min" class="form-control col-auto" placeholder="Min" />
+                        <label for="Min">Min</label>
+                    </span>
+                    <span class="input-group-text"> - </span>
+                    <span class="form-floating">
+                        <input type="text" id="Max" name="Max" class="form-control col-auto" placeholder="Max" />
+                        <label for="Max">Max</label>
+                    </span>
+                </span>
+                <button type="button" class="btn btn-primary col-auto" onclick="onSearch()">Search</button>
+            </form>
+            <div id="SearchContent" class="row g-0 gap-3">
             </div>
         </div>
         <!-- Bootstrap JS -->
@@ -33,6 +52,7 @@
             integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
             crossorigin="anonymous"></script>
         <script src="../scripts/functions.js"></script>
+        <script src="../scripts/renderer.js"></script>
     </body>
 
 </html>
