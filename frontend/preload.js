@@ -14,6 +14,7 @@ contextBridge.exposeInMainWorld('api', {
     signIn: (login) => ipcRenderer.invoke('api:login', login),
     logout: () => ipcRenderer.send('api:logout'),
     getAuthorization: () => ipcRenderer.invoke('api:authorization'),
+    pay: (payment) => ipcRenderer.invoke('api:payment', payment),
   }
 );
 
